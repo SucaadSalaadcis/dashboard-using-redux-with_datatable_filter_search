@@ -11,10 +11,21 @@ const Products = () => {
 
   const [items, setItems] = useState(data);
 
-  const filterItems = (category) => {
-    const updatedItems = data.filter((item) => item.category === category);
+  // const filterItems = (category) => {
+  //   const updatedItems = data.filter((item) => item.category === category);
 
-    setItems(updatedItems);
+  //   setItems(updatedItems);
+  // };
+
+  // Filter data based on the button value (e.g., 'all', 'shoes', etc.)
+  const handleFilter = (value) => {
+    if (value === 'all') {
+      setItems(data); // Show all items
+    } else {
+      // Filter items based on the selected value (e.g., 'shoes', 'bags')
+      const filteredItems = data.filter(item => item.category === value);
+      setItems(filteredItems);
+    }
   };
 
   // all buttons
@@ -24,7 +35,11 @@ const Products = () => {
     { label: 'Bag', value: 'bag', count: 891, badgeClass: 'bg-purple', iconClass: 'fas fa-shopping-bag', },
     { label: 'Dress', value: 'dress', count: 67, badgeClass: 'bg-teal', iconClass: 'fas fa-user', },
     { label: 'Shoes', value: 'shoes', count: 12, badgeClass: 'bg-info', iconClass: 'fas fa-shoe-prints', },
+    { label: 'All', value: 'all', count: 542, badgeClass: 'bg-danger', iconClass: 'fas fa-heart', },
+
+
   ];
+
 
 
   return (
@@ -444,7 +459,9 @@ const Products = () => {
             <div class="container-fluid">
               {/* Buttons */}
               <div>
-                <FilterButtons buttons={allButtons} onFilter={filterItems} />
+                {/* FilterButtons component */}
+                <FilterButtons buttons={allButtons} onFilter={handleFilter} />
+
               </div>
               {/* products */}
               <div className="product-grid pb-3">
