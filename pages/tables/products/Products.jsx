@@ -36,8 +36,6 @@ const Products = () => {
     { label: 'Dress', value: 'dress', count: 67, badgeClass: 'bg-teal', iconClass: 'fas fa-user', },
     { label: 'Shoes', value: 'shoes', count: 12, badgeClass: 'bg-info', iconClass: 'fas fa-shoe-prints', },
     { label: 'All', value: 'all', count: 542, badgeClass: 'bg-danger', iconClass: 'fas fa-heart', },
-
-
   ];
 
 
