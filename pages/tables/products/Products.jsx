@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
@@ -9,27 +9,30 @@ import FilterButtons from './reusible/FilterButtons'
 
 const Products = () => {
 
-  const [items, setItems] = useState(data);
-
-  // const filterItems = (category) => {
-  //   const updatedItems = data.filter((item) => item.category === category);
-
-  //   setItems(updatedItems);
-  // };
+  // pagination
+  const [currentPage, setcurrentPage] = useState(1);
+  const [itemsPartPage, setItemsPartPage] = useState(8);
+  const [filteredItems, setFilteredItems] = useState([]);
+  // console.log(filteredItems);
 
   // Filter data based on the button value (e.g., 'all', 'shoes', etc.)
   const handleFilter = (value) => {
     if (value === 'all') {
-      setItems(data); // Show all items
+      setFilteredItems(data); // Show all items
     } else {
       // Filter items based on the selected value (e.g., 'shoes', 'bags')
-      const filteredItems = data.filter(item => item.category === value);
-      setItems(filteredItems);
+      const filterItems = data.filter(item => item.category === value);
+      setFilteredItems(filterItems)
+      setcurrentPage(1)
     }
   };
 
-  // all buttons
+  useEffect(() => {
+    setFilteredItems(data);
+  }, []);
 
+
+  // all buttons
   const allButtons = [
     { label: 'Tshirt', value: 'tshirt', count: 300, badgeClass: 'bg-success', iconClass: 'fas fa-tshirt', },
     { label: 'Bag', value: 'bag', count: 891, badgeClass: 'bg-purple', iconClass: 'fas fa-shopping-bag', },
@@ -38,6 +41,15 @@ const Products = () => {
     { label: 'All', value: 'all', count: 542, badgeClass: 'bg-danger', iconClass: 'fas fa-heart', },
   ];
 
+  // pagination 
+  const indexOfLastItem = currentPage * itemsPartPage; // 1*8 = 8
+  const indexOfFirstItem = indexOfLastItem - itemsPartPage; // 8-8 = 0
+  const currentItem = filteredItems.slice(indexOfFirstItem, indexOfLastItem);  // 0,7
+  const paginate = (pageNumber) => setcurrentPage(pageNumber); // 
+
+  // console.log(Math.ceil(filteredItems.length/8)); // mydata/8 = 1.375 ceil(1.375) = 2
+  // indicating that 2 pages are needed to display the 11 items when each page can hold up to 8 items.
+  console.log(Array.from({ length: Math.ceil(filteredItems.length / 8) })) // (2) [undefined, undefined] the page number
 
 
   return (
@@ -455,15 +467,15 @@ const Products = () => {
           {/* <!-- Main content --> */}
           <section class="content">
             <div class="container-fluid">
-              {/* Buttons */}
+
+              {/* FilterButtons component */}
               <div>
-                {/* FilterButtons component */}
                 <FilterButtons buttons={allButtons} onFilter={handleFilter} />
 
               </div>
               {/* products */}
               <div className="product-grid pb-3">
-                {items.map((product, index) => (
+                {currentItem.map((product, index) => (
                   <div key={product.index} className="product-card">
                     <img src={product.image} alt={product.name} className="product-image" />
                     <h5 className="product-name">{product.name}</h5>
@@ -480,6 +492,24 @@ const Products = () => {
 
                   </div>
                 ))}
+              </div>
+
+              {/* pagination */}
+              <div className="d-flex justify-content-center">
+                {
+                  // Array.from():This creates an array with a length equal to the number of pages (2 in this case).
+                  // legth: 2
+                  // The array will be filled with undefined values, but the length of the array will be equal to the number of pages needed.
+                  Array.from({ length: Math.ceil(filteredItems.length / itemsPartPage) }).map((_, index) => (
+                    <button key={index + 1} onClick={() => paginate(index + 1)}
+                      style={{ width: "50px", height: "50px", marginBottom: '10px' }}
+                      className={`btn btn-primary rounded-circle  ${currentPage === index + 1 ? "btn btn-primary text-white" : "btn btn-warning"}`}
+                    >
+                      {index + 1}
+                      {/* page1 */}
+                    </button>
+                  ))
+                }
               </div>
 
             </div>
@@ -502,9 +532,6 @@ const Products = () => {
         {/* <!-- /.control-sidebar --> */}
       </div>
       {/* <!-- ./wrapper --> */}
-
-
-
 
     </body>
   );

@@ -1,4 +1,4 @@
-// data
+// all the products
 const data = [
     {
         id: 1,
@@ -37,7 +37,7 @@ const data = [
         image: "https://img.freepik.com/premium-photo/pair-white-sneakers-are-table-with-hat-it_1273023-74147.jpg?w=740",
     },
     {
-        id: 1,
+        id: 5,
         name: "Tshirt",
         price: 278,
         originalPrice: 300,
@@ -46,7 +46,7 @@ const data = [
         image: "https://img.freepik.com/free-photo/graphic-tshirt-trendy-design-mockup-presented-wooden-hanger_460848-13979.jpg?t=st=1726388631~exp=1726392231~hmac=f401bbb4948a1bd873fa0127684b1f3cdc6a81e374e349ec7e18bd002750297a&w=740",
     },
     {
-        id: 2,
+        id: 6,
         name: "Bag",
         price: 100,
         originalPrice: 150,
@@ -55,7 +55,7 @@ const data = [
         image: "https://img.freepik.com/free-photo/background-bags-beautiful-beauty-box_1303-995.jpg?t=st=1726388548~exp=1726392148~hmac=03160094be4557c66013c9091653482c300b3469d3941be28ae2b2fda40c0f95&w=740",
     },
     {
-        id: 3,
+        id: 7,
         name: "Dress",
         price: 842,
         originalPrice: 933,
@@ -64,7 +64,7 @@ const data = [
         image: "https://img.freepik.com/free-photo/still-life-spring-wardrobe-switch_23-2150478955.jpg?t=st=1726388492~exp=1726392092~hmac=af1cd336687f6858941bfcb73649e023c534d72e36d066d027c55647894214c5&w=360",
     },
     {
-        id: 4,
+        id: 8,
         name: "Shoes",
         price: 300,
         originalPrice: 500,
@@ -73,7 +73,7 @@ const data = [
         image: "https://img.freepik.com/premium-photo/chic-elegance-black-highheeled-shoes-with-hollow-pattern-red-sole-pop-art-style-4k-hyper_979568-9002.jpg?w=740",
     },
     {
-        id: 2,
+        id: 9,
         name: "Bag",
         price: 350,
         originalPrice: 470,
@@ -82,7 +82,7 @@ const data = [
         image: "https://img.freepik.com/free-photo/colorful-knitted-bag-still-life_23-2150709519.jpg?t=st=1726388898~exp=1726392498~hmac=c596666c9b9cd3f0c5d42a3cc7743dad96f7a2b644c2b31e98138dcaaf61e259&w=740",
     },
     {
-        id: 3,
+        id: 10,
         name: "Dress",
         price: 538,
         originalPrice: 675,
@@ -91,7 +91,7 @@ const data = [
         image: "https://img.freepik.com/free-photo/still-life-spring-wardrobe-switch_23-2150478968.jpg?t=st=1726389211~exp=1726392811~hmac=0d033d1119b93121f6c5db3f9a7037390d93b1a2c70e12bd995480899944384d&w=360",
     },
     {
-        id: 4,
+        id: 11,
         name: "Shoes",
         price: 241,
         originalPrice: 340,
@@ -99,7 +99,135 @@ const data = [
         rating: 4,
         image: "https://img.freepik.com/free-photo/model-career-kit-still-life_23-2150218025.jpg?t=st=1726389324~exp=1726392924~hmac=2bd1ca22f6bd4ce1fe532b248111b6c6471614d4ba710ec7134fec02f84dd64a&w=740",
     },
+    //
+    {
+        id: 12,
+        name: "Tshirt",
+        price: 245,
+        originalPrice: 123,
+        category: 'tshirt',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/minimalist-modern-flat-lay-tshirt-mockup-4k-hd-photo-background_1193781-9002.jpg?w=740",
+    },
+    {
+        id: 13,
+        name: "Bag",
+        price: 100,
+        originalPrice: 200,
+        category: 'bag',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/coral-peonies-yellow-leather-bag-black-wood-table_128442-127.jpg?w=740",
+    },
+    {
+        id: 14,
+        name: "Dress",
+        price: 400,
+        originalPrice: 600,
+        category: 'dress',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/vintage-clothing-boutique-with-vintage-dresses-accessori-isolated-podium-creative-layout-art-bg_655090-3437799.jpg?w=740",
+    },
 
+    {
+        id: 15,
+        name: "Shoes",
+        price: 300,
+        originalPrice: 500,
+        category: 'shoes',
+        rating: 4,
+        image: "https://img.freepik.com/free-photo/pretty-mother-s-day-assortment_23-2148888567.jpg?t=st=1726473005~exp=1726476605~hmac=787c475218f64a706c54bd81976bac4f01343c30d80fe3a6d86a247e6c9fe980&w=740",
+    },
+
+
+
+    // 
+    {
+        id: 16,
+        name: "Tshirt",
+        price: 245,
+        originalPrice: 123,
+        category: 'tshirt',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/minimalist-modern-flat-lay-tshirt-mockup-4k-hd-photo-background_1193781-8991.jpg?w=740",
+    },
+    {
+        id: 17,
+        name: "Bag",
+        price: 660,
+        originalPrice: 780,
+        category: 'bag',
+        rating: 4,
+        image: "https://img.freepik.com/free-photo/close-up-pink-knitted-bag-still-life_23-2150709603.jpg?t=st=1726472617~exp=1726476217~hmac=7ec0747f92ca71e66025b0a8ae22a799d614a93d2606655d8d09bc89229d782d&w=826",
+    },
+    {
+        id: 18,
+        name: "Dress",
+        price: 600,
+        originalPrice: 800,
+        category: 'dress',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/vintage-clothing-boutique-with-vintage-dresses-accessori-isolated-podium-creative-layout-art-bg_655090-3439507.jpg?w=740",
+    },
+
+    {
+        id: 19,
+        name: "Shoes",
+        price: 300,
+        originalPrice: 500,
+        category: 'shoes',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/autumn-arrives-stylish-look-lady-fashionable-hat-shoes-minimal-fashion_161568-2638.jpg?w=740",
+    },
+
+    //
+    {
+        id: 20,
+        name: "Tshirt",
+        price: 245,
+        originalPrice: 123,
+        category: 'tshirt',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/minimalist-modern-flat-lay-tshirt-mockup-4k-hd-photo-background_1193781-9001.jpg?w=740",
+    },
+
+    {
+        id: 21,
+        name: "Bag",
+        price: 980,
+        originalPrice: 1080,
+        category: 'bag',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/purse-design_1305489-41675.jpg?w=740",
+    },
+    {
+        id: 22,
+        name: "Dress",
+        price: 600,
+        originalPrice: 800,
+        category: 'dress',
+        rating: 4,
+        image: "https://img.freepik.com/free-photo/still-life-spring-wardrobe-switch_23-2150478984.jpg?t=st=1726472884~exp=1726476484~hmac=7ba2a95e47aa783b848294e0f0965127503a955eccdfa87c63f99800d8aefc5d&w=360",
+    },
+    {
+        id: 23,
+        name: "Shoes",
+        price: 300,
+        originalPrice: 500,
+        category: 'shoes',
+        rating: 4,
+        image: "https://img.freepik.com/premium-photo/autumn-hat-sunglasses-shoes-burgundy-fashion-lady_161568-2645.jpg?w=740",
+    },
+
+    // 
+    {
+        id: 24,
+        name: "Bag",
+        price: 660,
+        originalPrice: 780,
+        category: 'bag',
+        rating: 4,
+        image: "https://img.freepik.com/free-psd/3d-rendering-still-life-bag-content_23-2151662496.jpg?t=st=1726472691~exp=1726476291~hmac=416b7e7d7736002dffcc0a6b37975a2c0190b72037ba04f81cf0733f093a4801&w=740",
+    },
 
 ];
 export default data;
