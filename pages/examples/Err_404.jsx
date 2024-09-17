@@ -202,15 +202,6 @@ export default function Err_404() {
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <Link to={'/widgets'} class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Widgets
-                      <span class="right badge badge-danger">New</span>
-                    </p>
-                  </Link>
-                </li>
-                <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
@@ -308,11 +299,15 @@ export default function Err_404() {
                         <p>Products</p>
                       </Link>
                     </li>
+                    <li class="nav-item">
+                      <Link to={'/table/category'} class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Category</p>
+                      </Link>
+                    </li>
 
                   </ul>
                 </li>
-
-                <li class="nav-header">EXAMPLES</li>
 
 
 
@@ -360,73 +355,13 @@ export default function Err_404() {
                         </li>
                       </ul>
                     </li>
-                    <li class="nav-item">
-                      <Link to={'/example/lockscreen'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Lockscreen</p>
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <Link to={'/example/legacy_user_menu'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Legacy User Menu</p>
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <Link to={'/example/language_menu'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Language Menu</p>
-                      </Link>
-                    </li>
+                  
                     <li class="nav-item">
                       <Link to={'/example/404'} class="nav-link active">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Error 404</p>
                       </Link>
                     </li>
-                    <li class="nav-item">
-                      <Link to={'/example/500'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Error 500</p>
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <Link to={'/example/pace'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Pace</p>
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <Link to={'/example/blank'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Blank Page</p>
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../starter.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Starter Page</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-search"></i>
-                    <p>
-                      Search
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <Link to={'/search/simple_search'} class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Search</p>
-                      </Link>
-                    </li>
-
                   </ul>
                 </li>
 

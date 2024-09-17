@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import RefreshPage from '../../src/RefreshPage'
+import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
-import Logout from '../examples/Logout'
+import Logout from '../../examples/Logout'
+import Reusible_data_table from '../reusible/Reusible_data_table'
 
-export default function Simple() {
+export default function Category() {
+
+    // Define columns and data for the table
+    const columns = ['Name', 'Age', 'Country',];
+    const data = [
+        { Name: 'John', Age: 28, Country: 'USA', },
+        { Name: 'Jane', Age: 24, Country: 'UK', },
+        { Name: 'Michael', Age: 32, Country: 'Canada', },
+    ];
+
+    const handleUpdate = (id) => {
+        console.log('updated...')
+    }
+    const handleDelete = (id) => {
+        console.log('deleted...')
+    }
+
+
     return (
         <body class="hold-transition sidebar-mini">
             <div class="wrapper">
@@ -138,10 +156,10 @@ export default function Simple() {
                             </a>
                         </li>
                         {/* <li class="nav-item">
-                            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                <i class="fas fa-th-large"></i>
-                            </a>
-                        </li> */}
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                <i class="fas fa-th-large"></i>
+            </a>
+        </li> */}
                     </ul>
                 </nav>
                 {/* <!-- /.navbar --> */}
@@ -182,7 +200,7 @@ export default function Simple() {
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 {/* <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library --> */}
+                                  with font-awesome or any other icon font library --> */}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -200,15 +218,6 @@ export default function Simple() {
                                             </Link>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
@@ -232,7 +241,6 @@ export default function Simple() {
                                                 <p>Fixed Sidebar</p>
                                             </Link>
                                         </li>
-
                                         <li class="nav-item">
                                             <Link to={'/layout/fixed_top_nav'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -285,8 +293,8 @@ export default function Simple() {
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                <li class="nav-item menu-open">
+                                    <a href="#" class="nav-link active">
                                         <i class="nav-icon fas fa-table"></i>
                                         <p>
                                             Tables
@@ -294,7 +302,6 @@ export default function Simple() {
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
-
                                         <li class="nav-item">
                                             <Link to={'/table/user'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -305,6 +312,12 @@ export default function Simple() {
                                             <Link to={'/table/products'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Products</p>
+                                            </Link>
+                                        </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
                                             </Link>
                                         </li>
 
@@ -358,35 +371,16 @@ export default function Simple() {
                                             </ul>
                                         </li>
 
+
                                         <li class="nav-item">
                                             <Link to={'/example/404'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
                                     </ul>
                                 </li>
-                                <li class="nav-item menu-open">
-                                    <a href="#" class="nav-link active">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
+                            
                                 <li class="nav-item">
                                     <a class="nav-link">
                                         <IoIosLogOut style={{ color: "white", fontSize: "20px", marginLeft: '5px' }} />
@@ -402,30 +396,55 @@ export default function Simple() {
 
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
-
-                    {/* <!-- Main content --> */}
-                    <section class="content">
+                    {/* <!-- Content Header (Page header) --> */}
+                    <section class="content-header">
                         <div class="container-fluid">
-                            <h2 class="text-center display-4">Search</h2>
-                            <div class="row">
-                                <div class="col-md-8 offset-md-2">
-                                    <form action="simple-results.html">
-                                        <div class="input-group">
-                                            <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" />
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-lg btn-default">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1>Category</h1>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active">Category</li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>
                     </section>
-                </div>
 
-                {/* <!-- Main footer --> */}
+                    {/* <!-- Main content --> */}
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+
+                                        {/* <!-- /.card-body --> */}
+                                    </div>
+                                    {/* <!-- /.card --> */}
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">DataTable with default features</h3>
+                                        </div>
+                                        {/* <!-- /.card-header --> */}
+                                        <div class="card-body">
+                                            <Reusible_data_table columns={columns} data={data} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+                                        </div>
+                                        {/* <!-- /.card-body --> */}
+                                    </div>
+                                    {/* <!-- /.card --> */}
+                                </div>
+                                {/* <!-- /.col --> */}
+                            </div>
+                            {/* <!-- /.row --> */}
+                        </div>
+                        {/* <!-- /.container-fluid --> */}
+                    </section>
+                    {/* <!-- /.content --> */}
+                </div>
+                {/* <!-- /.content-wrapper --> */}
                 <footer class="main-footer">
                     <div class="float-right d-none d-sm-block">
                         <b>Version</b> 3.2.0

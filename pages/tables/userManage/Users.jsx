@@ -1,53 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import RefreshPage from '../../src/RefreshPage'
+import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
-import Logout from '../examples/Logout'
+import Logout from '../../examples/Logout'
 import axios from 'axios'
-import { FaEdit } from "react-icons/fa";
 
-import { MdDelete } from "react-icons/md";
+import Reusible_data_table from '../reusible/Reusible_data_table'
 
-export default function UserManagement() {
+export default function Users() {
 
 
     const [allUsers, setAllUsers] = useState([]);
 
-    const getAllUsers = () => {
-        axios.get('http://localhost:3000/auth/user')
-            .then(res => {
-                setAllUsers(res.data); // Set fetched data
-            })
-            .catch(err => console.log(err));
-    };
 
-    // Fetch users on component mount
+    // Define the columns based on the structure of your data
+    const columns = ['username', 'email',];
+
+
     useEffect(() => {
-        getAllUsers();
+        // Fetch data from the backend
+        axios.get('http://localhost:3000/auth/user')
+            .then((response) => {
+                setAllUsers(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
     }, []);
 
-    // Initialize DataTables after data is loaded
-    useEffect(() => {
-        if (allUsers.length > 0) {
-            // Initialize DataTable after rendering the data
-            $(function () {
-                $("#example1").DataTable({
-                    "responsive": true, "lengthChange": false, "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
-            });
-        }
-    }, [allUsers]); // Re-run the DataTable initialization when `allUsers` changes
+    const handleUpdate = () => {
+        console.log('updated...')
+    }
+    const handleDelete = () => {
+        console.log('deleted...')
+    }
 
 
     return (
@@ -182,11 +168,6 @@ export default function UserManagement() {
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </a>
                         </li>
-                        {/* <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> */}
                     </ul>
                 </nav>
                 {/* <!-- /.navbar --> */}
@@ -227,7 +208,7 @@ export default function UserManagement() {
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 {/* <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library --> */}
+                                   with font-awesome or any other icon font library --> */}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -245,15 +226,6 @@ export default function UserManagement() {
                                             </Link>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
@@ -350,6 +322,12 @@ export default function UserManagement() {
                                                 <p>Products</p>
                                             </Link>
                                         </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
+                                            </Link>
+                                        </li>
 
                                     </ul>
                                 </li>
@@ -412,24 +390,8 @@ export default function UserManagement() {
 
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
 
-                                    </ul>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link">
                                         <IoIosLogOut style={{ color: "white", fontSize: "20px", marginLeft: '5px' }} />
@@ -479,41 +441,8 @@ export default function UserManagement() {
                                         </div>
                                         {/* <!-- /.card-header --> */}
                                         <div class="card-body">
-                                            <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Update</th>
-                                                        <th>Delete</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {
-                                                        allUsers.map((ele) => (
-                                                            <>
-                                                                <tr key={ele.id}>
-                                                                    <td>{ele.username}</td>
-                                                                    <td>{ele.email}</td>
-                                                                    <td> <FaEdit className='text-lg text-blue' /> </td>
-                                                                    <td> <MdDelete className='text-lg text-red' /> </td>
-                                                                </tr>
-                                                            </>
-                                                        ))
-                                                    }
-                                                </tbody>
-
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Update</th>
-                                                        <th>Delete</th>
-
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
+                                            {/* Pass the fetched data and column names to the reusable component */}
+                                            <Reusible_data_table columns={columns} data={allUsers} handleUpdate={handleUpdate} handleDelete={handleDelete} />
                                         </div>
                                         {/* <!-- /.card-body --> */}
                                     </div>
@@ -542,9 +471,6 @@ export default function UserManagement() {
                 {/* <!-- /.control-sidebar --> */}
             </div>
             {/* <!-- ./wrapper --> */}
-
-
-
 
         </body>
     )

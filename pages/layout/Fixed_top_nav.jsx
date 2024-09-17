@@ -202,15 +202,6 @@ export default function Fixed_top_nav() {
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
-                                </li>
                                 <li class="nav-item menu-open">
                                     <a href="#" class="nav-link active">
                                         <i class="nav-icon fas fa-copy"></i>
@@ -307,6 +298,12 @@ export default function Fixed_top_nav() {
                                                 <p>Products</p>
                                             </Link>
                                         </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
+                                            </Link>
+                                        </li>
 
                                     </ul>
                                 </li>
@@ -366,26 +363,6 @@ export default function Fixed_top_nav() {
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
-
                                     </ul>
                                 </li>
 

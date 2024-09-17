@@ -15,7 +15,8 @@ import Inline from '../pages/charts/Inline'
 import Uplot from '../pages/charts/uplot'
 
 // tables
-import UserManagement from '../pages/tables/UserManagement'
+import Users from '../pages/tables/userManage/Users'
+import Products from '../pages/tables/products/Products'
 
 
 // examples
@@ -26,13 +27,8 @@ import Recover_password_v2 from '../pages/examples/Recover_password_v2'
 import Register_v2 from '../pages/examples/Register_v2'
 
 
-
-// search
-import Simple_Search from '../pages/search/Simple'
-
-
 import { Toaster } from 'react-hot-toast';
-import Products from '../pages/tables/products/Products'
+import Category from '../pages/tables/products/Category'
 
 export default function App() {
   return (
@@ -58,11 +54,9 @@ export default function App() {
 
 
         {/* tables */}
-        <Route path='/table/user' element={<UserManagement />} />
-
-        {/* search */}
-        <Route path='/search/simple_search' element={<Simple_Search />} />
-
+        <Route path='/table/user' element={<Users />} />
+        <Route path='/table/products' element={<Products />} />
+        <Route path='/table/category' element={<Category />} />
 
         {/* exmaple */}
         <Route path='/example/404' element={<Err_404 />} />
@@ -72,7 +66,6 @@ export default function App() {
         <Route path='/example/register_v2' element={<Register_v2 />} />
 
 
-        <Route path='/table/products' element={<Products />} />
 
       </Routes>
 

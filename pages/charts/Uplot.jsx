@@ -285,15 +285,6 @@ export default function Uplot() {
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
-                                </li>
-                                <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-copy"></i>
                                         <p>
@@ -353,12 +344,6 @@ export default function Uplot() {
                                             </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link to={'/charts/flot'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Flot</p>
-                                            </Link>
-                                        </li>
-                                        <li class="nav-item">
                                             <Link to={'/charts/inline'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Inline</p>
@@ -391,11 +376,21 @@ export default function Uplot() {
                                                 <p>UserManagement</p>
                                             </Link>
                                         </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/products'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Products</p>
+                                            </Link>
+                                        </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
+                                            </Link>
+                                        </li>
 
                                     </ul>
                                 </li>
-
-
 
 
                                 <li class="nav-item">
@@ -451,34 +446,9 @@ export default function Uplot() {
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <Link to={'/table/products'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Products</p>
-                                            </Link>
-                                        </li>
-
-                                    </ul>
-                                </li>
+                             
 
                                 <li class="nav-item">
                                     <a class="nav-link">

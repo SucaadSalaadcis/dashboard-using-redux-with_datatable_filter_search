@@ -202,15 +202,6 @@ export default function Boxed() {
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
-                                </li>
                                 <li class="nav-item menu-open">
                                     <a href="#" class="nav-link active">
                                         <i class="nav-icon fas fa-copy"></i>
@@ -309,6 +300,12 @@ export default function Boxed() {
                                                 <p>Products</p>
                                             </Link>
                                         </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
+                                            </Link>
+                                        </li>
 
                                     </ul>
                                 </li>
@@ -358,7 +355,6 @@ export default function Boxed() {
                                             </ul>
                                         </li>
 
-
                                         <li class="nav-item">
                                             <Link to={'/example/404'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -368,44 +364,9 @@ export default function Boxed() {
 
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li class="nav-header">MISCELLANEOUS</li>
-                                <li class="nav-item">
-                                    <Link to={'/iframe'} class="nav-link">
-                                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                                        <p>Tabbed IFrame Plugin</p>
-                                    </Link>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                                        <i class="nav-icon fas fa-file"></i>
-                                        <p>Documentation</p>
-                                    </a>
-                                </li>
-                                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-circle nav-icon"></i>
-                                        <p>Level 1</p>
-                                    </a>
-                                </li>
+                               
+                              
+                               
                                 <li class="nav-item">
                                     <a class="nav-link">
                                         <IoIosLogOut style={{ color: "white", fontSize: "20px", marginLeft: '5px' }} />

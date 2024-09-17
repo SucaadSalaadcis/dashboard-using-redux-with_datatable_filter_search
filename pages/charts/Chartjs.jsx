@@ -367,7 +367,7 @@ export default function Chartjs() {
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 {/* <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library --> */}
+                                     with font-awesome or any other icon font library --> */}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -385,15 +385,6 @@ export default function Chartjs() {
                                             </Link>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <Link to={'/widgets'} class="nav-link">
-                                        <i class="nav-icon fas fa-th"></i>
-                                        <p>
-                                            Widgets
-                                            <span class="right badge badge-danger">New</span>
-                                        </p>
-                                    </Link>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
@@ -493,6 +484,12 @@ export default function Chartjs() {
                                                 <p>Products</p>
                                             </Link>
                                         </li>
+                                        <li class="nav-item">
+                                            <Link to={'/table/category'} class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Category</p>
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -550,31 +547,9 @@ export default function Chartjs() {
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
-
-
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-search"></i>
-                                        <p>
-                                            Search
-                                            <i class="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <Link to={'/search/simple_search'} class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Simple Search</p>
-                                            </Link>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
+                              
 
                                 <li class="nav-item">
                                     <a class="nav-link">
