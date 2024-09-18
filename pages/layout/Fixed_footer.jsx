@@ -233,7 +233,7 @@ export default function Fixed_footer() {
                                             </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link to={'/layout/fixed_footer'} class="nav-link">
+                                            <Link to={'/layout/fixed_footer'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Fixed Footer</p>
                                             </Link>

@@ -226,7 +226,7 @@ export default function Fixed_top_nav() {
                                             </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link to={'/layout/fixed_top_nav'} class="nav-link">
+                                            <Link to={'/layout/fixed_top_nav'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Fixed Navbar</p>
                                             </Link>

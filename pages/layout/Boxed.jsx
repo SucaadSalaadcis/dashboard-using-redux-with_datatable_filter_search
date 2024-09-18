@@ -214,7 +214,7 @@ export default function Boxed() {
                                     <ul class="nav nav-treeview">
 
                                         <li class="nav-item">
-                                            <Link to={'/layout/boxed'} class="nav-link">
+                                            <Link to={'/layout/boxed'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Boxed</p>
                                             </Link>

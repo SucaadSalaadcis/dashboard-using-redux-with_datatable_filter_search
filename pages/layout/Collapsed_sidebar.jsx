@@ -238,7 +238,7 @@ export default function Collapsed_sidebar() {
                                             </Link>
                                         </li>
                                         <li class="nav-item">
-                                            <Link to={'/layout/collapsed_sidebar'} class="nav-link">
+                                            <Link to={'/layout/collapsed_sidebar'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Collapsed Sidebar</p>
                                             </Link>
