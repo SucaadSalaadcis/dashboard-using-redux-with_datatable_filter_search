@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import RefreshPage from '../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../examples/Logout'
-import { BrandLogo, Footer, MainContent, Navbar, SearchForm, UserPanel } from '../tables/reusible/Sidebar'
+import { BrandLogo, Content_Header, Footer, MainContent, Navbar, SearchForm, UserPanel } from '../tables/reusible/Sidebar'
 
 export default function Boxed() {
     return (
@@ -231,22 +231,7 @@ export default function Boxed() {
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
-                    <section class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1>Boxed Layout</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                                        <li class="breadcrumb-item active">Boxed Layout</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <Content_Header title={'Boxed Layout'} link={'Home'} />
 
                     {/* <!-- Main content --> */}
                     <MainContent />

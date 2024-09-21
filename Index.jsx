@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import RefreshPage from './src/RefreshPage';
 
 import Logout from './pages/examples/Logout';
-import { BrandLogo, Footer, Navbar, SearchForm, UserPanel } from './pages/tables/reusible/Sidebar';
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from './pages/tables/reusible/Sidebar';
 
 export default function Index() {
 
@@ -259,21 +259,7 @@ export default function Index() {
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
-                    <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1 class="m-0">ADWAAR </h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active">ADWAAR</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Content_Header title={'ADWAAR'} link={'Home'} />
 
 
                     {/* <!-- Main content --> */}

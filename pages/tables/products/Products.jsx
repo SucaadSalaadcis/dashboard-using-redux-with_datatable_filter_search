@@ -7,7 +7,7 @@ import Logout from '../../../pages/examples/Logout'
 import './Products.css';
 import data from './data'
 import FilterButtons from '../../tables/reusible/FilterButtons'
-import { BrandLogo, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar';
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar';
 
 const Products = () => {
   const [searchQuery, setSearchQuery] = useState(''); // State for search query
@@ -289,21 +289,7 @@ const Products = () => {
         {/* <!-- Content Wrapper. Contains page content --> */}
         <div class="content-wrapper">
           {/* <!-- Content Header (Page header) --> */}
-          <section class="content-header">
-            <div class="container-fluid">
-              <div class="row mb-2">
-                <div class="col-sm-6">
-                  <h1>Products</h1>
-                </div>
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Products</li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </section>
+          <Content_Header title={'Products'} link={'Home'} />
 
           {/* <!-- Main content --> */}
           <section class="content">

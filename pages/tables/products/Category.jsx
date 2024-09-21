@@ -4,7 +4,7 @@ import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
 import Reusible_data_table from '../reusible/Reusible_data_table'
-import { BrandLogo, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
 
 export default function Category() {
 
@@ -270,21 +270,7 @@ export default function Category() {
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
-                    <section class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1>Category</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active">Category</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <Content_Header title={'Category'} link={'Home'} />
 
                     {/* <!-- Main content --> */}
                     <section class="content">

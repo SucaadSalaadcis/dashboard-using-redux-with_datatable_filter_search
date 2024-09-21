@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RefreshPage from '../../../src/RefreshPage';
 
 
-export const Navbar = ({navImg1, navImg2, navImg3}) => (
+export const Navbar = ({ navImg1, navImg2, navImg3 }) => (
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         {/* <!-- Left navbar links --> */}
         <ul class="navbar-nav">
@@ -100,7 +100,7 @@ export const Navbar = ({navImg1, navImg2, navImg3}) => (
                     <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
             </li>
-            
+
             {/* <!-- Notifications Dropdown Menu --> */}
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -225,3 +225,23 @@ export const Footer = () => {
         </footer>
     );
 }
+
+
+// Content Header
+export const Content_Header = ({ title, link }) => (
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{title}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">{link}</a></li>
+                        <li class="breadcrumb-item active">{title}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+)

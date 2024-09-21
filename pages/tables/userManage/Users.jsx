@@ -6,7 +6,7 @@ import Logout from '../../examples/Logout'
 import axios from 'axios'
 
 import Reusible_data_table from '../reusible/Reusible_data_table'
-import { BrandLogo, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
 
 export default function Users() {
 
@@ -260,21 +260,7 @@ export default function Users() {
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
-                    <section class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1>User Management</h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active">UserManagement</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <Content_Header title={'UserManagement'} link={'Home'} />
 
                     {/* <!-- Main content --> */}
                     <section class="content">
