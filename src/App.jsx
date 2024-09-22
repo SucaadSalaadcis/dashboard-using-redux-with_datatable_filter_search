@@ -17,6 +17,8 @@ import Uplot from '../pages/charts/uplot'
 // tables
 import Users from '../pages/tables/userManage/Users'
 import Products from '../pages/tables/products/Products'
+import Category from '../pages/tables/products/Category'
+import UpdateUser from '../pages/tables/userManage/UpdateUser'
 
 
 // examples
@@ -28,7 +30,6 @@ import Register_v2 from '../pages/examples/Register_v2'
 
 
 import { Toaster } from 'react-hot-toast';
-import Category from '../pages/tables/products/Category'
 
 export default function App() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
 
         {/* tables */}
         <Route path='/table/user' element={<Users />} />
+        <Route path='/table/updateuser/:id' element={<UpdateUser />} />
         <Route path='/table/products' element={<Products />} />
         <Route path='/table/category' element={<Category />} />
 

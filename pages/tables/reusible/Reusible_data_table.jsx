@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 
-export default function Reusible_data_table({ columns, handleUpdate, handleDelete, url }) {
+export default function Reusible_data_table({ columns, handleDelete, url }) {
 
     const [data, setData] = useState([]);
 
@@ -71,11 +72,14 @@ export default function Reusible_data_table({ columns, handleUpdate, handleDelet
 
                             ))}
                             <td>
-                                {/* Update Icon with Action */}
-                                <FaEdit onClick={() => handleUpdate(row.id)} className='text-lg text-blue' />
+                                {/* Update */}
+                               
+                                <Link to={`/table/updateuser/${row._id}`}>
+                                    <FaEdit className='text-lg text-blue' />
+                                </Link>
                             </td>
                             <td>
-                                {/* Delete Icon with Action */}
+                                {/* Delete */}
                                 <MdDelete onClick={() => handleDelete(row.id)} className='text-lg text-red' />
                             </td>
 

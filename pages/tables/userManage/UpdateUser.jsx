@@ -1,23 +1,54 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
-import axios from 'axios'
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../../tables/reusible/Sidebar'
 
-import Reusible_data_table from '../reusible/Reusible_data_table'
-import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
+import toast from "react-hot-toast";
 
-export default function Users() {
+export default function UpdateUser() {
+
+    const [username, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
 
-    // Define the columns based on the structure of your data
-    const columns = ['username', 'email',];
+    const params = useParams();
+    const navigate = useNavigate();
 
 
-    const handleDelete = () => {
-        console.log('deleted...')
+    // get single data 
+    const handleSingleData = () => {
+        axios.get(`http://localhost:3000/auth/get/${params.id}`).then(res => {
+            setUserName(res.data[0].username);
+            setEmail(res.data[0].email);
+            setPassword(res.data[0].password);
+        }).catch(err => console.log(err));
     }
+
+    useEffect(() => {
+        handleSingleData();
+    }, []);
+
+
+    // put
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        axios.put(`http://localhost:3000/auth/update/${params.id}`, {
+            username,
+            email,
+            password
+        }).then(() => {
+            toast.success("Updated Successfully...");
+            navigate('/table/user')
+        }).catch(err => console.log(err));
+    }
+
+
 
 
     return (
@@ -29,6 +60,7 @@ export default function Users() {
 
                 {/* <!-- Main Sidebar Container --> */}
                 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
                     {/* <!-- Brand Logo --> */}
                     <BrandLogo />
 
@@ -43,7 +75,7 @@ export default function Users() {
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 {/* <!-- Add icons to the links using the .nav-icon class
-                                   with font-awesome or any other icon font library --> */}
+                                      with font-awesome or any other icon font library --> */}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -72,6 +104,7 @@ export default function Users() {
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
+
                                         <li class="nav-item">
                                             <Link to={'/layout/boxed'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -84,6 +117,7 @@ export default function Users() {
                                                 <p>Fixed Sidebar</p>
                                             </Link>
                                         </li>
+
                                         <li class="nav-item">
                                             <Link to={'/layout/fixed_top_nav'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -136,8 +170,8 @@ export default function Users() {
                                 </li>
 
 
-                                <li class="nav-item menu-open">
-                                    <a href="#" class="nav-link active">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-table"></i>
                                         <p>
                                             Tables
@@ -145,8 +179,9 @@ export default function Users() {
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
+
                                         <li class="nav-item">
-                                            <Link to={'/table/user'} class="nav-link active">
+                                            <Link to={'/table/user'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>UserManagement</p>
                                             </Link>
@@ -169,7 +204,7 @@ export default function Users() {
 
 
 
-                                <li class="nav-item">
+                                <li class="nav-item ">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon far fa-plus-square"></i>
                                         <p>
@@ -214,18 +249,14 @@ export default function Users() {
                                             </ul>
                                         </li>
 
-
                                         <li class="nav-item">
-                                            <Link to={'/example/404'} class="nav-link">
+                                            <Link to={'/example/404'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
                                     </ul>
                                 </li>
-
 
                                 <li class="nav-item">
                                     <a class="nav-link">
@@ -243,39 +274,70 @@ export default function Users() {
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
-                    <Content_Header title={'UserManagement'} link={'Home'} />
+                    <Content_Header title={'Update User'} link={'Home'} />
 
                     {/* <!-- Main content --> */}
-                    <section class="content">
+                    <section class="content pt-5 pb-5">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-
-                                        {/* <!-- /.card-body --> */}
-                                    </div>
-                                    {/* <!-- /.card --> */}
-
-                                    <div class="card">
+                            <div class="row justify-content-center">
+                                {/* <!-- left column --> */}
+                                <div class="col-md-8">
+                                    {/* <!-- Horizontal Form --> */}
+                                    <div class="card card-info">
                                         <div class="card-header">
-                                            <h3 class="card-title">DataTable with default features</h3>
+                                            <h3 class="card-title">User Update Form</h3>
                                         </div>
-                                        {/* <!-- /.card-header --> */}
-                                        <div class="card-body">
-                                            {/* Pass the fetched data and column names to the reusable component */}
-                                            <Reusible_data_table columns={columns} url={'auth/getAllUsers'} handleDelete={handleDelete} />
-                                        </div>
-                                        {/* <!-- /.card-body --> */}
+
+                                        {/* <!-- form start --> */}
+                                        <form class="form-horizontal">
+                                            <div class="card-body">
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name :</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={username} onChange={(e) => setUserName(e.target.value)}
+                                                            type="text" class="form-control" id="inputName3" placeholder="Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email :</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={email} onChange={(e) => setEmail(e.target.value)}
+                                                            type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password :</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={password} onChange={(e) => setPassword(e.target.value)}
+                                                            type="password" class="form-control" id="inputPassword3" placeholder="Password" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="offset-sm-2 col-sm-10">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck2" />
+                                                            <label class="form-check-label" for="exampleCheck2">Remember me</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* <!-- /.card-body --> */}
+                                            <div class="card-footer">
+                                                <button onClick={handleUpdate} type="submit" class="btn btn-info">Update</button>
+                                            </div>
+                                            {/* <!-- /.card-footer --> */}
+                                        </form>
                                     </div>
                                     {/* <!-- /.card --> */}
+
                                 </div>
-                                {/* <!-- /.col --> */}
+
                             </div>
                             {/* <!-- /.row --> */}
                         </div>
-                        {/* <!-- /.container-fluid --> */}
                     </section>
                     {/* <!-- /.content --> */}
+
                 </div>
                 {/* <!-- /.content-wrapper --> */}
 
@@ -284,6 +346,7 @@ export default function Users() {
 
             </div>
             {/* <!-- ./wrapper --> */}
+
 
         </body>
     )
