@@ -22,7 +22,9 @@ mongoose.connect(process.env.DB).then(()=>{
 }).catch((err) => console.log(err))
 
 const userRoute = require('./routes/userRoute');
+const categoryRoute = require('./routes/Category');
 
-app.use('/auth',userRoute);
+app.use('/auth',userRoute); 
+app.use('/category',categoryRoute); 
 
-app.listen(3000, () => console.log("Server is Runing on port 5000")) 
+app.listen(3000, () => console.log("Server is Runing on port 3000")) 

@@ -1,8 +1,24 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 
-export default function Reusible_data_table({ columns, data, handleUpdate, handleDelete }) {
+
+export default function Reusible_data_table({ columns, handleUpdate, handleDelete, url }) {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // Fetch data from the backend
+        axios.get(`http://localhost:3000/${url}`)
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, [url]);
+
 
     useEffect(() => {
         if (data.length > 0) {
@@ -43,8 +59,16 @@ export default function Reusible_data_table({ columns, data, handleUpdate, handl
                 <tbody>
                     {data.map((row, rowIndex) => (
                         <tr key={rowIndex}>
-                            {columns.map((col, colIndex) => (
-                                <td key={colIndex}>{row[col]}</td>
+                            {columns.map((col, i) => (
+                                // <td key={i} >{row[col]}</td>
+                                <td key={i}>
+                                    {col === 'image' ? (
+                                        <img src={row[col]} className="rounded-circle img-fluid" style={{ width: '50px', height: '50px' }} />
+                                    ) : (
+                                        row[col]
+                                    )}
+                                </td>
+
                             ))}
                             <td>
                                 {/* Update Icon with Action */}

@@ -6,7 +6,13 @@ const verifyUser = require('../middleware/verifyUser');
 const router = express.Router();
 
 
-router.get('/user',userController.getUser);
+router.get('/getAllUsers',userController.getUser);
+router.get('/get/:id',userController.singleData);
+router.post('/create',userController.createUser);
+router.put('/update/:id',userController.updateUser);
+router.delete('/del/:id',userController.deleteUser);
+
+// other
 router.post('/signup',userController.RegisterUser);
 router.post('/login',userController.login);
 router.post('/forgot-password',userController.forgetPassword);

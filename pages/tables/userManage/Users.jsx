@@ -11,23 +11,8 @@ import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from
 export default function Users() {
 
 
-    const [allUsers, setAllUsers] = useState([]);
-
-
     // Define the columns based on the structure of your data
     const columns = ['username', 'email',];
-
-
-    useEffect(() => {
-        // Fetch data from the backend
-        axios.get('http://localhost:3000/auth/user')
-            .then((response) => {
-                setAllUsers(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
 
     const handleUpdate = () => {
         console.log('updated...')
@@ -280,7 +265,7 @@ export default function Users() {
                                         {/* <!-- /.card-header --> */}
                                         <div class="card-body">
                                             {/* Pass the fetched data and column names to the reusable component */}
-                                            <Reusible_data_table columns={columns} data={allUsers} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+                                            <Reusible_data_table columns={columns} url={'auth/getAllUsers'} handleUpdate={handleUpdate} handleDelete={handleDelete} />
                                         </div>
                                         {/* <!-- /.card-body --> */}
                                     </div>

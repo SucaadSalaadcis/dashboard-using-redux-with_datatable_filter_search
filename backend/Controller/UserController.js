@@ -6,18 +6,83 @@ var nodemailer = require('nodemailer');
 
 // get
 const getUser = async (req, res) => {
-  const user = await userModel.find({});
-  res.json(user);
+  try {
+    const data = await userModel.find({});
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
 }
+
+// post 
+const createUser = async (req, res) => {
+
+  try {
+    const newData = await userModel(req.body);
+    const saveData = newData.save();
+    if (saveData) {
+      res.status(200).json({ message: 'created successfully', newData });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+}
+
+// update 
+const updateUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedata = await userModel.findByIdAndUpdate(
+      { _id: id },
+      { $set: req.body }
+    )
+    if (updatedata) {
+      res.status(200).json("updated successfully")
+    }
+  } catch (error) {
+    res.json(error);
+  }
+}
+
+// delete 
+const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedata = await userModel.findByIdAndDelete(id);
+    if (deletedata) {
+      res.status(200).json('Deleted successfully...')
+    }
+  } catch (error) {
+    res.json(error.message);
+  }
+}
+
+// single 
+const singleData = async (req, res) => {
+  try {
+    const data = await userModel.find(
+      { _id: req.params.id }
+    )
+    if (data)
+      res.status(200).json(data);
+
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+
+
+// other 
 
 // register
 const RegisterUser = async (req, res) => {
 
   try {
     const { username, email, password } = req.body;
-    
-    if(!username || !email || !password) {
-      return res.status(400).json({message: 'All fields are required'})
+
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required' })
     }
 
     const user = await userModel.findOne({ email });
@@ -25,7 +90,7 @@ const RegisterUser = async (req, res) => {
     if (user) {
       return res.status(400).json({ message: 'User already exit!' })
     }
-   
+
     const hashedPassword = bcryptjs.hashSync(password, 10);
 
     const newUser = new userModel({
@@ -153,4 +218,19 @@ const logout = (req, res) => {
   return res.status(200).json({ status: true })
 }
 
-module.exports = { getUser, RegisterUser, login, forgetPassword, resetPassword, verify, logout }
+
+
+module.exports = {
+  RegisterUser,
+  login,
+  forgetPassword,
+  resetPassword,
+  verify,
+  logout,
+  singleData,
+
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser
+}
