@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
+
+
+import axiosPublicURL from '../../../src/hooks/AxiosHook'
+
 import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../../tables/reusible/Sidebar'
 
 import toast from "react-hot-toast";
@@ -16,6 +20,9 @@ export default function UpdateUser() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    
+    const useAxios = axiosPublicURL();
+
 
     const params = useParams();
     const navigate = useNavigate();
@@ -23,7 +30,7 @@ export default function UpdateUser() {
 
     // get single data 
     const handleSingleData = () => {
-        axios.get(`http://localhost:3000/auth/get/${params.id}`).then(res => {
+        useAxios.get(`auth/get/${params.id}`).then(res => {
             setUserName(res.data[0].username);
             setEmail(res.data[0].email);
             setPassword(res.data[0].password);
@@ -38,7 +45,7 @@ export default function UpdateUser() {
     // put
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3000/auth/update/${params.id}`, {
+        useAxios.put(`auth/update/${params.id}`, {
             username,
             email,
             password

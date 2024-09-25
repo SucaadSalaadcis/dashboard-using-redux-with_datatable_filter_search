@@ -1,17 +1,22 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 
+import axiosPublicURL from '../../../src/hooks/AxiosHook'
+
 export default function Reusible_data_table({ columns, handleDelete, url }) {
+
+
+    const useAxios = axiosPublicURL();
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
         // Fetch data from the backend
-        axios.get(`http://localhost:3000/${url}`)
+        useAxios.get(`${url}`)
             .then((response) => {
                 setData(response.data);
             })
@@ -73,7 +78,7 @@ export default function Reusible_data_table({ columns, handleDelete, url }) {
                             ))}
                             <td>
                                 {/* Update */}
-                               
+
                                 <Link to={`/table/updateuser/${row._id}`}>
                                     <FaEdit className='text-lg text-blue' />
                                 </Link>
