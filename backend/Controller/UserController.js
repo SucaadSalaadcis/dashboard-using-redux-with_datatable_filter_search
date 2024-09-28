@@ -16,13 +16,25 @@ const getUser = async (req, res) => {
 
 // its post is register
 
+
 // update 
 const updateUser = async (req, res) => {
   try {
     const id = req.params.id;
+
+    const { username, email, password } = req.body;
+
+    const hashedPassword = bcryptjs.hashSync(password, 10);
+
     const updatedata = await userModel.findByIdAndUpdate(
       { _id: id },
-      { $set: req.body }
+      {
+        $set: {
+          username,
+          email,
+          password: hashedPassword,
+        }
+      }
     )
     if (updatedata) {
       res.status(200).json("updated successfully")
@@ -31,6 +43,7 @@ const updateUser = async (req, res) => {
     res.json(error);
   }
 }
+
 
 // delete 
 const deleteUser = async (req, res) => {
