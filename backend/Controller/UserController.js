@@ -14,20 +14,7 @@ const getUser = async (req, res) => {
   }
 }
 
-// post 
-const createUser = async (req, res) => {
-
-  try {
-    const newData = await userModel(req.body);
-    const saveData = newData.save();
-    if (saveData) {
-      res.status(200).json({ message: 'created successfully', newData });
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-
-}
+// its post is register
 
 // update 
 const updateUser = async (req, res) => {
@@ -230,7 +217,6 @@ module.exports = {
   singleData,
 
   getUser,
-  createUser,
   updateUser,
   deleteUser
 }

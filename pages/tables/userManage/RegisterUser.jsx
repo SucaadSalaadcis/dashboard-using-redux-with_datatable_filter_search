@@ -19,20 +19,22 @@ export default function RegisterUser() {
 
     const useAxios = axiosPublicURL();
     // post
-    // post
     const handlePost = (e) => {
         e.preventDefault();
         const data = {
             username, email, password
         }
-        useAxios.post("auth/create", data).then(() => {
-            window.location.reload(1);
-            toast.success("Registered..");
-            dispatch(setUserData(response.data))
+
+        useAxios.post("auth/signup", data).then((response) => {
+            if (response.data.status) {
+                toast.success('Registered Successfuly...')
+                dispatch(setUserData(response.data));
+                window.location.reload();
+
+            }
 
         }).catch((error) => console.log(error));
     }
-
 
 
 

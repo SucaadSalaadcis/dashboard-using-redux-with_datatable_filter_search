@@ -14,7 +14,7 @@ import { setUserData } from '../../redux/AuthSlice'
 export default function Users() {
 
     // Define the columns based on the structure of your data
-    const columns = ['username', 'email',];
+    const columns = ['username', 'email', 'password'];
 
     return (
         <div class="hold-transition sidebar-mini">

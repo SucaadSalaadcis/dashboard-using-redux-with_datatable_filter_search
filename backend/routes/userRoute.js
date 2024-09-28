@@ -8,12 +8,12 @@ const router = express.Router();
 
 router.get('/getAllUsers',userController.getUser);
 router.get('/get/:id',userController.singleData);
-router.post('/create',userController.createUser);
+
 router.put('/update/:id',userController.updateUser);
 router.delete('/del/:id',userController.deleteUser);
 
 // other
-router.post('/signup',userController.RegisterUser);
+router.post('/signup',userController.RegisterUser); // create
 router.post('/login',userController.login);
 router.post('/forgot-password',userController.forgetPassword);
 router.post('/reset-password/:token',userController.resetPassword);
