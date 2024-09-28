@@ -107,7 +107,7 @@ const data = [
         originalPrice: 123,
         category: 'tshirt',
         rating: 4,
-        image: "https://img.freepik.com/premium-photo/minimalist-modern-flat-lay-tshirt-mockup-4k-hd-photo-background_1193781-9002.jpg?w=740",
+        image: "https://img.freepik.com/free-photo/spring-wardrobe-switch-top-view_23-2150264134.jpg?t=st=1727514533~exp=1727518133~hmac=a66121ed6a574cc40dc3e51730e0e90b3eaa916326e13324de7df4701c422fa3&w=740",
     },
     {
         id: 13,
