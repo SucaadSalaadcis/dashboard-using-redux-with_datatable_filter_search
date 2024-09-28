@@ -40,7 +40,7 @@ export default function Register_v2() {
             <div class="register-box">
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
-                        <a class="h1"><b>Admin</b>LTE</a>
+                        <a class="h1"><b>ADWAAR</b></a>
                     </div>
                     <div class="card-body">
                         <p class="login-box-msg">Register a new membership</p>

@@ -33,7 +33,7 @@ export default function Recover_password_v2() {
             <div class="login-box">
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
-                        <a class="h1"><b>Admin</b>LTE</a>
+                        <a class="h1"><b>ADWAAR</b></a>
                     </div>
                     <div class="card-body">
                         <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>

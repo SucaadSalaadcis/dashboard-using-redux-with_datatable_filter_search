@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
-
 
 import axiosPublicURL from '../../../src/hooks/AxiosHook'
 
@@ -20,9 +19,7 @@ export default function UpdateUser() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    
     const useAxios = axiosPublicURL();
-
 
     const params = useParams();
     const navigate = useNavigate();
@@ -45,7 +42,7 @@ export default function UpdateUser() {
     // put
     const handleUpdate = (e) => {
         e.preventDefault();
-        useAxios.put(`auth/update/${params.id}`, {
+        axios.put(`http://localhost:3000/auth/update/${params.id}`, {
             username,
             email,
             password

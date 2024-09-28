@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
+
 import Reusible_data_table from '../reusible/Reusible_data_table'
+
 import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
+import RegisterCategory from './RegisterCategory'
+import { MdAddBox } from 'react-icons/md'
+import { setCategoryData } from '../../redux/AuthSlice'
+
 
 export default function Category() {
 
     // Defining columns and data for the table
     const columns = ['name', 'image', 'size', 'price'];
-
-    const handleUpdate = (id) => {
-        console.log('updated...')
-    }
-    const handleDelete = (id) => {
-        console.log('deleted...')
-    }
-
 
     return (
         <body class="hold-transition sidebar-mini">
@@ -236,42 +233,45 @@ export default function Category() {
                     </div>
                     {/* <!-- /.sidebar --> */}
                 </aside>
-
+                {/* modal div */}
+                <div class="modal fade" id="modal-default" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Create User</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {/* content */}
+                                <RegisterCategory />
+                            </div>
+                        </div>
+                        {/* <!-- /.modal-content --> */}
+                    </div>
+                </div>
+                {/* end modal div */}
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
                     {/* <!-- Content Header (Page header) --> */}
                     <Content_Header title={'Category'} link={'Home'} />
 
+                    {/* modal btn */}
+                    <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#modal-default">
+                        <MdAddBox style={{ fontSize: '30px' }} />
+                    </button>
+
                     {/* <!-- Main content --> */}
                     <section class="content">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
 
-                                        {/* <!-- /.card-body --> */}
-                                    </div>
-                                    {/* <!-- /.card --> */}
+                        <div class="card-body">
+                            {/* <Reusible_data_table  columns={columns} url={'category/getAllCategory'} /> */}
+                            <Reusible_data_table columns={columns} url={'category/getAllCategory'} dispatchAction={setCategoryData} dataKey="categories" />
 
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="card-title">DataTable with default features</h3>
-                                        </div>
-                                        {/* <!-- /.card-header --> */}
-                                        <div class="card-body">
-                                            <Reusible_data_table columns={columns} url={'category/getAllCategory'} handleUpdate={handleUpdate} handleDelete={handleDelete} />
-                                        </div>
-                                        {/* <!-- /.card-body --> */}
-                                    </div>
-                                    {/* <!-- /.card --> */}
-                                </div>
-                                {/* <!-- /.col --> */}
-                            </div>
-                            {/* <!-- /.row --> */}
                         </div>
-                        {/* <!-- /.container-fluid --> */}
+
                     </section>
-                    {/* <!-- /.content --> */}
                 </div>
                 {/* <!-- /.content-wrapper --> */}
 

@@ -1,20 +1,62 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { Link } from 'react-router-dom'
 import RefreshPage from '../../../src/RefreshPage'
 import { IoIosLogOut } from 'react-icons/io'
 import Logout from '../../examples/Logout'
 
-import Reusible_data_table from '../reusible/Reusible_data_table'
-import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../reusible/Sidebar'
-import { MdAddBox } from "react-icons/md";
+import axiosPublicURL from '../../../src/hooks/AxiosHook'
 
-import RegisterUser from './RegisterUser'
-import { setUserData } from '../../redux/AuthSlice'
+import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from '../../tables/reusible/Sidebar'
 
-export default function Users() {
+import toast from "react-hot-toast";
 
-    // Define the columns based on the structure of your data
-    const columns = ['username', 'email',];
+export default function UpdateCategory() {
+
+    const [name, setName] = useState("");
+    const [image, setImage] = useState("");
+    const [size, setSize] = useState("");
+    const [price, setPrice] = useState("");
+
+    const useAxios = axiosPublicURL();
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+
+    // get single data 
+    const handleSingleData = () => {
+        useAxios.get(`category/get/${params.id}`).then(res => {
+            setName(res.data[0].name);
+            setImage(res.data[0].image);
+            setSize(res.data[0].size);
+            setPrice(res.data[0].price);
+        }).catch(err => console.log(err));
+    }
+
+    useEffect(() => {
+        handleSingleData();
+    }, []);
+
+
+    // put
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        useAxios.put(`category/update/${params.id}`, {
+            name,
+            image,
+            size,
+            price
+        }).then(() => {
+            toast.success("Updated Successfully...");
+            navigate('/table/category')
+        }).catch(err => console.log(err));
+    }
+
+
+
 
     return (
         <body class="hold-transition sidebar-mini">
@@ -25,6 +67,7 @@ export default function Users() {
 
                 {/* <!-- Main Sidebar Container --> */}
                 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
                     {/* <!-- Brand Logo --> */}
                     <BrandLogo />
 
@@ -39,7 +82,7 @@ export default function Users() {
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 {/* <!-- Add icons to the links using the .nav-icon class
-                                   with font-awesome or any other icon font library --> */}
+                                      with font-awesome or any other icon font library --> */}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -68,6 +111,7 @@ export default function Users() {
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
+
                                         <li class="nav-item">
                                             <Link to={'/layout/boxed'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -80,6 +124,7 @@ export default function Users() {
                                                 <p>Fixed Sidebar</p>
                                             </Link>
                                         </li>
+
                                         <li class="nav-item">
                                             <Link to={'/layout/fixed_top_nav'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
@@ -132,8 +177,8 @@ export default function Users() {
                                 </li>
 
 
-                                <li class="nav-item menu-open">
-                                    <a href="#" class="nav-link active">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-table"></i>
                                         <p>
                                             Tables
@@ -141,8 +186,9 @@ export default function Users() {
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
+
                                         <li class="nav-item">
-                                            <Link to={'/table/user'} class="nav-link active">
+                                            <Link to={'/table/user'} class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>UserManagement</p>
                                             </Link>
@@ -165,7 +211,7 @@ export default function Users() {
 
 
 
-                                <li class="nav-item">
+                                <li class="nav-item ">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon far fa-plus-square"></i>
                                         <p>
@@ -210,18 +256,14 @@ export default function Users() {
                                             </ul>
                                         </li>
 
-
                                         <li class="nav-item">
-                                            <Link to={'/example/404'} class="nav-link">
+                                            <Link to={'/example/404'} class="nav-link active">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Error 404</p>
                                             </Link>
                                         </li>
-
-
                                     </ul>
                                 </li>
-
 
                                 <li class="nav-item">
                                     <a class="nav-link">
@@ -235,44 +277,72 @@ export default function Users() {
                     </div>
                     {/* <!-- /.sidebar --> */}
                 </aside>
-                {/* modal div */}
-                <div class="modal fade" id="modal-default" >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Create User</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                {/* content */}
-                                <RegisterUser />
-                            </div>
-                        </div>
-                        {/* <!-- /.modal-content --> */}
-                    </div>
-                </div>
-                {/* end modal div */}
 
                 {/* <!-- Content Wrapper. Contains page content --> */}
                 <div class="content-wrapper">
-
                     {/* <!-- Content Header (Page header) --> */}
-                    <Content_Header title={'UserManagement'} link={'Home'} />
-
-                    <button class="btn btn-primary ml-3" data-toggle="modal" data-target="#modal-default">
-                        <MdAddBox style={{ fontSize: '30px' }} />
-                    </button>
+                    <Content_Header title={'Update Category'} link={'Home'} />
 
                     {/* <!-- Main content --> */}
-                    <section class="content">
-                        <div class="card-body">
-                            {/* <Reusible_data_table columns={columns} url={'auth/getAllUsers'}/> */}
-                            <Reusible_data_table columns={columns} url={'auth/getAllUsers'} dispatchAction={setUserData} dataKey="users" />
+                    <section class="content pt-5 pb-5">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                {/* <!-- left column --> */}
+                                <div class="col-md-8">
+                                    {/* <!-- Horizontal Form --> */}
+                                    <div class="card card-info">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Category Update Form</h3>
+                                        </div>
 
+                                        {/* <!-- form start --> */}
+                                        <form class="form-horizontal">
+                                            <div class="card-body">
+                                                <div class="form-group row">
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={name} onChange={(e) => setName(e.target.value)}
+                                                            type="text" class="form-control" id="inputName3" placeholder="Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={image} onChange={(e) => setImage(e.target.value)}
+                                                            type="text" class="form-control" id="inputImage" placeholder="Image" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSize" class="col-sm-2 col-form-label">Size</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={size} onChange={(e) => setSize(e.target.value)}
+                                                            type="text" class="form-control" id="inputSize" placeholder="Size" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+                                                    <div class="col-sm-10">
+                                                        <input value={price} onChange={(e) => setPrice(e.target.value)}
+                                                            type="text" class="form-control" id="inputPrice" placeholder="Price" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* <!-- /.card-body --> */}
+                                            <div class="card-footer">
+                                                <button onClick={handleUpdate} type="submit" class="btn btn-info">Update</button>
+                                            </div>
+                                            {/* <!-- /.card-footer --> */}
+                                        </form>
+                                    </div>
+                                    {/* <!-- /.card --> */}
+
+                                </div>
+
+                            </div>
+                            {/* <!-- /.row --> */}
                         </div>
                     </section>
+                    {/* <!-- /.content --> */}
 
                 </div>
                 {/* <!-- /.content-wrapper --> */}
@@ -282,6 +352,7 @@ export default function Users() {
 
             </div>
             {/* <!-- ./wrapper --> */}
+
 
         </body>
     )
