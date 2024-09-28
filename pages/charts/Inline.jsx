@@ -96,11 +96,7 @@ export default function Inline() {
 
 
     return (
-        //     <div>
-        //     {/* Example Usage */}
-        //     <input type="text" className="knob" data-skin="tron" />
-        //   </div>
-        <body class="hold-transition sidebar-mini">
+        <div class="hold-transition sidebar-mini">
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
                 <Navbar navImg1={'../../dist/img/user1-128x128.jpg'} navImg2={'../../dist/img/user8-128x128.jpg'} navImg3={'../../dist/img/user3-128x128.jpg'} />
@@ -547,7 +543,7 @@ export default function Inline() {
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-4 text-center">
-                                                    <div id="sparkline-1"></div>
+                                                    <canvas id="sparkline-1"></canvas>
                                                 </div>
                                                 {/* <!-- ./col --> */}
                                                 <div class="col-4 text-center">
@@ -580,7 +576,7 @@ export default function Inline() {
 
             </div>
 
-        </body>
+        </div>
 
     )
 }

@@ -3,7 +3,7 @@ const categorySchema = require('../Model/Category');
 // get
 const getAll = async (req, res) => {
     try {
-        const data = await categorySchema.find({});
+        const data = await categorySchema.find();
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ message: error.message })

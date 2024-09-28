@@ -5,7 +5,7 @@ const FilterButtons = ({ buttons, onFilter }) => {
     <div className="filter-buttons">
       {buttons.map((button) => (
         <button
-          key={button.label}
+          key={button.id}
           className="btn btn-app"
           onClick={() => onFilter(button.value)}
         >

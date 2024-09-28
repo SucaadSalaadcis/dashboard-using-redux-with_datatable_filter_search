@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, } from 'react';
 import toast from 'react-hot-toast';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import axiosPublicURL from '../../../src/hooks/AxiosHook'
 import { useDispatch, useSelector } from 'react-redux';
+import { removeOneData } from '../../redux/AuthSlice';
 
 
 
@@ -19,9 +20,9 @@ export default function Reusible_data_table({ columns, url, dispatchAction, data
     // const [data, setData] = useState([]);
 
     const dispatch = useDispatch();
-    
+
     const { data } = useSelector((state) => state.data[dataKey]);
-    console.log(data);
+    // console.log(data);
 
 
     const handleAllData = async () => {
@@ -44,29 +45,34 @@ export default function Reusible_data_table({ columns, url, dispatchAction, data
 
     // auth/del/
 
-    const handleDelete = (pathLink, id) => {
-        useAxios.delete(`${pathLink}/${id}`).then(() => {
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
+    const handleDelete = (pathLink, id, type) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, proceed with delete request
+                useAxios.delete(`${pathLink}/${id}`).then(() => {
+                    // After successful delete, dispatch the Redux action
+                    dispatch(removeOneData({ id, type }));
                     handleAllData();
                     Swal.fire({
                         title: "Deleted!",
-                        text: "Your file has been deleted.",
+                        text: "Your data has been deleted.",
                         icon: "success"
                     });
-                }
-            });
-
-        }).catch((error) => console.log(error))
-    }
+                }).catch((error) => {
+                    console.log("Error deleting the record: ", error);
+                });
+            }
+        });
+    };
 
 
 
@@ -75,22 +81,15 @@ export default function Reusible_data_table({ columns, url, dispatchAction, data
 
             $(document).ready(function () {
                 $("#example1").DataTable({
-                    "responsive": true, "lengthChange": false, "autoWidth": false,
+                    "responsive": true, "lengthChange": true, "autoWidth": false,
+                    "paging": true, "searching": true, "ordering": true,
+                    "info": true,
                     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
             });
         }
     }, [data]);
+
 
 
     return (
@@ -148,9 +147,9 @@ export default function Reusible_data_table({ columns, url, dispatchAction, data
                                                     {/* Delete Icon with Action */}
                                                     {
                                                         location.pathname === '/table/user' ?
-                                                            <MdDelete onClick={() => handleDelete('auth/del', row._id)} className='text-lg text-red' style={{ cursor: 'pointer' }} />
+                                                            <MdDelete onClick={() => handleDelete('auth/del', row._id, 'category')} className='text-lg text-red' style={{ cursor: 'pointer' }} />
                                                             : location.pathname === '/table/category' ?
-                                                                <MdDelete onClick={() => handleDelete('category/del', row._id)} className='text-lg text-red' style={{ cursor: 'pointer' }} />
+                                                                <MdDelete onClick={() => handleDelete('category/del', row._id, 'user')} className='text-lg text-red' style={{ cursor: 'pointer' }} />
                                                                 : ''
                                                     }
 

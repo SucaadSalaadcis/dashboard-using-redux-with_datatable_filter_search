@@ -29,7 +29,7 @@ export default function Recover_password_v2() {
     }
     // console.log(password);
     return (
-        <body class="hold-transition login-page">
+        <div class="hold-transition login-page">
             <div class="login-box">
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
@@ -73,6 +73,6 @@ export default function Recover_password_v2() {
             </div>
             {/* <!-- /.login-box --> */}
 
-        </body>
+        </div>
     )
 }

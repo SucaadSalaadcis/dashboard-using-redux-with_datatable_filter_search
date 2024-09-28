@@ -7,7 +7,7 @@ var nodemailer = require('nodemailer');
 // get
 const getUser = async (req, res) => {
   try {
-    const data = await userModel.find({});
+    const data = await userModel.find();
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: error.message })

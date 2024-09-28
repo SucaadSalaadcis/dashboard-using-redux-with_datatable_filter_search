@@ -7,7 +7,7 @@ import { BrandLogo, Content_Header, Footer, MainContent, Navbar, SearchForm, Use
 
 export default function Boxed() {
     return (
-        <body class="hold-transition sidebar-mini layout-boxed">
+        <div class="hold-transition sidebar-mini layout-boxed">
             {/* <!-- Site wrapper --> */}
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
@@ -245,6 +245,6 @@ export default function Boxed() {
             </div>
             {/* <!-- ./wrapper --> */}
 
-        </body>
+        </div>
     )
 }

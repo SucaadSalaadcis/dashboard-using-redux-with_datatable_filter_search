@@ -7,7 +7,7 @@ import { BrandLogo, Content_Header, Footer, MainContent, Navbar, SearchForm, Use
 
 export default function Fixed_footer() {
     return (
-        <body class="hold-transition sidebar-mini layout-footer-fixed">
+        <div class="hold-transition sidebar-mini layout-footer-fixed">
             {/* <!-- Site wrapper --> */}
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
@@ -244,6 +244,6 @@ export default function Fixed_footer() {
             {/* <!-- ./wrapper --> */}
 
 
-        </body>
+        </div>
     )
 }

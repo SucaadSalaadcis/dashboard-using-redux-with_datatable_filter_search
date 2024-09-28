@@ -34,7 +34,7 @@ export default function Forgot_password_v2() {
     }
     // console.log(email);
     return (
-        <body class="hold-transition login-page">
+        <div class="hold-transition login-page">
             <div class="login-box">
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
@@ -70,6 +70,6 @@ export default function Forgot_password_v2() {
             {/* <!-- /.login-box --> */}
 
 
-        </body>
+        </div>
     )
 }

@@ -41,28 +41,28 @@ export default function RegisterCategory() {
             <form class="form-horizontal">
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                        <label htmlFor="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
                             <input value={name} onChange={(e) => setName(e.target.value)}
                                 type="text" class="form-control" id="inputName3" placeholder="Name" />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                        <label htmlFor="inputImage" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
                             <input value={image} onChange={(e) => setImage(e.target.value)}
                                 type="text" class="form-control" id="inputImage" placeholder="Image" />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputSize" class="col-sm-2 col-form-label">Size</label>
+                        <label htmlFor="inputSize" class="col-sm-2 col-form-label">Size</label>
                         <div class="col-sm-10">
                             <input value={size} onChange={(e) => setSize(e.target.value)}
                                 type="text" class="form-control" id="inputSize" placeholder="Size" />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+                        <label htmlFor="inputPrice" class="col-sm-2 col-form-label">Price</label>
                         <div class="col-sm-10">
                             <input value={price} onChange={(e) => setPrice(e.target.value)}
                                 type="text" class="form-control" id="inputPrice" placeholder="Price" />

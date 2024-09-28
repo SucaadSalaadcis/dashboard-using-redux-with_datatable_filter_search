@@ -27,17 +27,8 @@ export default function Index() {
     }, []);
 
 
-    const handleLogout = () => {
-        axios.get('http://localhost:3000/auth/logout').then((res) => {
-            if (res.data.status) {
-                toast.success("Logout Successfully...")
-                navigate('/example/login_v2');
-            }
-        }).catch((err) => console.log(err));
-    }
-
     return (
-        <body class="hold-transition sidebar-mini">
+        <div class="hold-transition sidebar-mini">
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
                 <Navbar navImg1={'dist/img/user1-128x128.jpg'} navImg2={'dist/img/user8-128x128.jpg'} navImg3={'dist/img/user3-128x128.jpg'} />
@@ -520,6 +511,6 @@ export default function Index() {
 
             </div>
             {/* <!-- ./wrapper --> */}
-        </body>
+        </div>
     )
 }

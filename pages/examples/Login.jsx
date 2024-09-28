@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Login() {
     return (
-        <body class="hold-transition login-page">
+        <div class="hold-transition login-page">
             <div class="login-box">
                 <div class="login-logo">
                     <a href="../../index2.html"><b>ADWAAR</b></a>
@@ -69,6 +69,6 @@ export default function Login() {
             </div>
             {/* <!-- /.login-box --> */}
 
-        </body>
+        </div>
     )
 }

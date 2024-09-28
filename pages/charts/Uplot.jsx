@@ -89,7 +89,7 @@ export default function Uplot() {
     })
 
     return (
-        <body class="hold-transition sidebar-mini">
+        <div class="hold-transition sidebar-mini">
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
                 <Navbar navImg1={'../../dist/img/user1-128x128.jpg'} navImg2={'../../dist/img/user8-128x128.jpg'} navImg3={'../../dist/img/user3-128x128.jpg'} />
@@ -356,7 +356,7 @@ export default function Uplot() {
                                 </div>
                                 <div class="card-body">
                                     <div class="chart">
-                                        <div id="lineChart" style={{ minHeight: '250px', height: '250px', maxHeight: '250px', maxWidth: '100%' }}></div>
+                                        <canvas id="lineChart" style={{ minHeight: '250px', height: '250px', maxHeight: '250px', maxWidth: '100%' }}></canvas>
                                     </div>
                                 </div>
                                 {/* <!-- /.card-body --> */}
@@ -376,6 +376,6 @@ export default function Uplot() {
 
 
 
-        </body>
+        </div>
     )
 }

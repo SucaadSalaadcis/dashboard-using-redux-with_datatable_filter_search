@@ -7,7 +7,7 @@ import { BrandLogo, Content_Header, Footer, MainContent, Navbar, SearchForm, Use
 
 export default function Collapsed_sidebar() {
     return (
-        <body class="hold-transition sidebar-mini sidebar-collapse">
+        <div class="hold-transition sidebar-mini sidebar-collapse">
             {/* <!-- Site wrapper --> */}
             <div class="wrapper">
                 {/* <!-- Navbar --> */}
@@ -241,6 +241,6 @@ export default function Collapsed_sidebar() {
             </div>
             {/* <!-- ./wrapper --> */}
 
-        </body>
+        </div>
     )
 }

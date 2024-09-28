@@ -34,7 +34,7 @@ export default function Login_v2() {
 
     
     return (
-        <body class="hold-transition login-page">
+        <div class="hold-transition login-page">
             <div class="login-box">
                 {/* <!-- /.login-logo --> */}
                 <div class="card card-outline card-primary">
@@ -109,6 +109,6 @@ export default function Login_v2() {
             {/* <!-- /.login-box --> */}
 
 
-        </body>
+        </div>
     )
 }

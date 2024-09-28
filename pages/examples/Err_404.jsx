@@ -7,7 +7,7 @@ import { BrandLogo, Content_Header, Footer, Navbar, SearchForm, UserPanel } from
 
 export default function Err_404() {
   return (
-    <body class="hold-transition sidebar-mini">
+    <div class="hold-transition sidebar-mini">
       <div class="wrapper">
         {/* <!-- Navbar --> */}
         <Navbar navImg1={'../../dist/img/user1-128x128.jpg'} navImg2={'../../dist/img/user8-128x128.jpg'} navImg3={'../../dist/img/user3-128x128.jpg'} />
@@ -271,6 +271,6 @@ export default function Err_404() {
       {/* <!-- ./wrapper --> */}
 
 
-    </body>
+    </div>
   )
 }
